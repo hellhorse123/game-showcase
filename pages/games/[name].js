@@ -22,7 +22,7 @@ export default function singleGame({ dlc, game, screenshots, similar }) {
   );
 }
 
-export const getStaticProps = async ({ params }) => {
+export const getServerSideProps = async ({ params }) => {
   const results = await Promise.all([
     apiURL(`/games/${params.name}?`),
     apiURL(`/games/${params.name}/screenshots?`),
@@ -44,19 +44,5 @@ export const getStaticProps = async ({ params }) => {
       similar: similar?.results || [],
       dlc: dlc?.results || [],
     },
-    revalidate: 120,
   };
 };
-
-export async function getStaticPaths() {
-  const data = await apiURL(`/games/lists/main?ordering=-rating&`);
-
-  const paths = data?.results.map((item) => ({
-    params: { name: item.name.toLowerCase() },
-  }));
-
-  return {
-    paths: paths || [],
-    fallback: "blocking",
-  };
-}

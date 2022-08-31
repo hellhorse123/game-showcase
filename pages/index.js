@@ -18,7 +18,7 @@ export default function HomePage({ data, platforms }) {
   );
 }
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const data = await apiURL(
     `/games/lists/main?page_size=20&page=1&ordering=-rating&`
   );
@@ -30,6 +30,5 @@ export const getStaticProps = async () => {
       data: data?.results || [],
       platforms: platforms?.results || [],
     },
-    revalidate: 120,
   };
 };
