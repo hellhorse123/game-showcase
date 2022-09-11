@@ -1,4 +1,4 @@
-This is a kind of clone of the gameShowcase site. Made thanks to the API provided by them. The application is written in Next.js + React + JS, using SSR and many functional Hooks.
+This is a kind of clone of the rawg.io site. Made thanks to the API provided by them. The application is written in Next.js + React + JS, using SSR and many functional Hooks.
 
 First of all, run 
 ```
